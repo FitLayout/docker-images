@@ -1,12 +1,12 @@
 [submodule "FitLayout"]
 	path = FitLayout
-	url = git@github.com:FitLayout/FitLayout.git
+	url = https://github.com/FitLayout/FitLayout.git
 	branch = master
 [submodule "FitLayoutWeb"]
 	path = FitLayoutWeb
-	url = git@github.com:FitLayout/FitLayoutWeb.git
+	url = https://github.com/FitLayout/FitLayoutWeb.git
 	branch = master
 [submodule "fitlayout-puppeteer"]
 	path = fitlayout-puppeteer
-	url = git@github.com:FitLayout/fitlayout-puppeteer.git
+	url = https://github.com/FitLayout/fitlayout-puppeteer.git
 	branch = main
