@@ -5,6 +5,9 @@ mkdir files
 
 # Build FitLayout core
 cd ../FitLayout
+cd lib
+./install.sh
+cd ..
 mvn -DskipTests clean install
 
 # Build FitLayout web API
