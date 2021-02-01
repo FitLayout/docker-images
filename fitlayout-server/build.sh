@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#
+# This script builds the fitlayout/fitlayout-server docker image.
+#
+
 WD="`pwd`"
 mkdir files
 
@@ -29,8 +33,5 @@ cp ../fitlayout-puppeteer/package*.json files
 # Create docker image
 docker build -t fitlayout/fitlayout-server .
 
-# Clean
+# Clean up
 rm -rf files
-
-# Run the image
-docker rm -f fitlayout-server || true && docker run -d -p 8400:8400 --mount 'source=flstorage,target=/opt/storage' --name fitlayout-server --restart unless-stopped fitlayout/fitlayout-server 
