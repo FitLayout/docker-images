@@ -12,15 +12,19 @@ RUN apt-get update \
 ENV LANG en_US.utf8
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
-ENV DEPLOYMENT_DIR /opt
+ENV CLI_DIR /opt/cli
+ENV DEPLOYMENT_DIR /opt/server
 
 # FitLayout CLI
 ENV CLI FitLayout.jar
-COPY ./files/${CLI} ${DEPLOYMENT_DIR}
+RUN mkdir -p ${CLI_DIR}
+COPY ./files/${CLI} ${CLI_DIR}
+COPY ./config.properties ${CLI_DIR}
 
 # FitLayout server
 ENV BUNDLE fitlayout-web-microbundle.jar
 ENV PORT 8400
+RUN mkdir -p ${DEPLOYMENT_DIR}
 COPY ./files/${BUNDLE} ${DEPLOYMENT_DIR}
 COPY ./config.properties ${DEPLOYMENT_DIR}
 
