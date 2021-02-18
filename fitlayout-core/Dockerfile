@@ -23,7 +23,6 @@ COPY ./config.properties ${CLI_DIR}
 
 # FitLayout server
 ENV BUNDLE fitlayout-web-microbundle.jar
-ENV PORT 8400
 RUN mkdir -p ${DEPLOYMENT_DIR}
 COPY ./files/${BUNDLE} ${DEPLOYMENT_DIR}
 COPY ./config.properties ${DEPLOYMENT_DIR}

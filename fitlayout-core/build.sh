@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# This script builds the fitlayout/fitlayout-server docker image.
+# This script builds the fitlayout/fitlayout-core docker image.
 #
 
 WD="`pwd`"
