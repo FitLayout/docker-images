@@ -1,11 +1,11 @@
 [submodule "FitLayout"]
 	path = FitLayout
 	url = https://github.com/FitLayout/FitLayout.git
-	branch = master
+	branch = main
 [submodule "FitLayoutWeb"]
 	path = FitLayoutWeb
 	url = https://github.com/FitLayout/FitLayoutWeb.git
-	branch = master
+	branch = main
 [submodule "fitlayout-puppeteer"]
 	path = fitlayout-puppeteer
 	url = https://github.com/FitLayout/fitlayout-puppeteer.git
