@@ -1,4 +1,5 @@
 FROM fitlayout/fitlayout-core
+LABEL maintainer="Radek Burget, burgetr@fit.vutbr.cz" description="FitLayout server image with a REST API."
 
 ENV PORT 8400
 
