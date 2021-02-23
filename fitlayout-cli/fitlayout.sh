@@ -15,7 +15,7 @@ if [ ! -d "$OUTPUT_FOLDER" ]; then
 fi
 
 # Run the image
-docker run -it \
+docker run \
   --mount type=bind,source="$STORAGE_PATH",target=/opt/storage \
   --mount type=bind,source="$OUTPUT_FOLDER",target=/out \
   fitlayout/fitlayout-cli $@
