@@ -1,0 +1,29 @@
+version: "3"
+services:
+    front-server:
+        image: "nginx:stable-alpine"
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - "./FrontServer/default.conf:/etc/nginx/conf.d/default.conf"
+            - "./FrontServer/certbot/conf:/etc/letsencrypt"
+            - "./FrontServer/certbot/www:/var/www/certbot"
+        container_name: "front-server"
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    certbot:
+        image: "certbot/certbot"
+        volumes:
+            - "./FrontServer/certbot/conf:/etc/letsencrypt"
+            - "./FrontServer/certbot/www:/var/www/certbot"
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    backend-server:
+        image: "fitlayout/fitlayout-server"
+        ports:
+            - "8400:8400"
+        container_name: "backend-server"
+    page-view:
+        image: "skulaurun/page-view"
+        ports:
+            - "8440:80"
+        container_name: "page-view"
