@@ -10,3 +10,7 @@
 	path = fitlayout-puppeteer
 	url = https://github.com/FitLayout/fitlayout-puppeteer.git
 	branch = main
+[submodule "PageView"]
+	path = PageView
+	url = https://github.com/FitLayout/PageView.git
+	branch = main
