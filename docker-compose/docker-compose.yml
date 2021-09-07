@@ -2,6 +2,8 @@ version: "3"
 services:
     front-server:
         image: "nginx:stable-alpine"
+        depends_on:
+            - certbot
         ports:
             - "80:80"
             - "443:443"
