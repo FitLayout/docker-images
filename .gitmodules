@@ -14,9 +14,11 @@
 	path = PageView
 	url = https://github.com/FitLayout/PageView.git
 	branch = main
-[submodule "jwt-auth-microservice"]
-	path = jwt-auth-microservice
-	url = https://github.com/radkovo/jwt-auth-microservice.git
 [submodule "AuthGUI"]
 	path = AuthGUI
 	url = https://github.com/FitLayout/AuthGUI.git
+	branch = main
+[submodule "jwt-auth-microservice"]
+	path = jwt-auth-microservice
+	url = https://github.com/radkovo/jwt-auth-microservice.git
+  branch = main
