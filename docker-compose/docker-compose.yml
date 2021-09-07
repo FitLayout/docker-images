@@ -25,7 +25,7 @@ services:
             - "8400:8400"
         container_name: "backend-server"
     page-view:
-        image: "skulaurun/page-view"
+        image: "fitlayout/fitlayout-frontend"
         ports:
             - "8440:80"
         container_name: "page-view"
