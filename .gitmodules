@@ -18,3 +18,7 @@
 	path = AuthGUI
 	url = https://github.com/FitLayout/AuthGUI.git
 	branch = main
+[submodule "jwt-auth-microservice"]
+	path = jwt-auth-microservice
+	url = https://github.com/radkovo/jwt-auth-microservice.git
+  branch = main
