@@ -14,3 +14,7 @@
 	path = PageView
 	url = https://github.com/FitLayout/PageView.git
 	branch = main
+[submodule "AuthGUI"]
+	path = AuthGUI
+	url = https://github.com/FitLayout/AuthGUI.git
+	branch = main
