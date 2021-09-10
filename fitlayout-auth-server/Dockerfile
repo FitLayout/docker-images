@@ -1,4 +1,4 @@
-ROM maven:3.8.2-jdk-11-slim AS build-stage
+FROM maven:3.8.2-jdk-11-slim AS build-stage
 WORKDIR /app
 COPY app/ .
 RUN mvn clean package -DskipTests
