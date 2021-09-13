@@ -8,4 +8,6 @@ docker run -d -p 8480:8080 \
     --restart unless-stopped \
     --name $CONTAINER_NAME \
     --mount 'source=authstorage,target=/opt/storage' \
+    --volume /opt/shared/fitlayout-auth-server:/opt/shared \
+    --volume /opt/config/fitlayout-auth-server:/opt/config \
     $IMAGE_NAME
