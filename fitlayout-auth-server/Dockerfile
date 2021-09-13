@@ -3,13 +3,10 @@ WORKDIR /app
 COPY app/ .
 RUN mvn clean package -DskipTests
 
-# Using older payara/micro version due to a bug.
-# https://github.com/payara/Payara/issues/5363
-FROM payara/micro:5.2021.4-jdk11 AS production-stage
+FROM payara/micro:5.2021.6-jdk11 AS production-stage
 COPY --from=build-stage /app/target/jwt-auth.war $DEPLOY_DIR
 CMD [ \
     "--deploymentDir", "/opt/payara/deployments", \
-    "--contextroot", "ROOT", \
     "--systemproperties", "/opt/config/microprofile-config.properties" \
 ]
 
