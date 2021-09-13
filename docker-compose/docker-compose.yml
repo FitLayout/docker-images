@@ -3,7 +3,8 @@ services:
     front-server:
         image: "nginx:stable-alpine"
         depends_on:
-            - certbot
+            - "certbot"
+            - "backend-server"
         ports:
             - "80:80"
             - "443:443"
@@ -18,14 +19,36 @@ services:
         volumes:
             - "./FrontServer/certbot/conf:/etc/letsencrypt"
             - "./FrontServer/certbot/www:/var/www/certbot"
+        container_name: "front-server-certbot"
         entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     backend-server:
         image: "fitlayout/fitlayout-server"
+        depends_on:
+            - "auth-server"
         ports:
             - "8400:8400"
+        volumes:
+            - "/opt/shared/fitlayout-auth-server/publicKey.pem:/opt/jwtauth/publicKey.pem"
         container_name: "backend-server"
+    auth-server:
+        image: "fitlayout/fitlayout-auth-server"
+        ports:
+            - "8480:8080"
+        volumes:
+            - "/opt/config/fitlayout-auth-server:/opt/config"
+            - "/opt/shared/fitlayout-auth-server:/opt/shared"
+            - "authstorage:/opt/storage"
+        container_name: "auth-server"
+    auth-gui:
+        image: "fitlayout/fitlayout-auth-gui"
+        ports:
+            - "8460:80"
+        container_name: "auth-gui"
     page-view:
         image: "fitlayout/fitlayout-frontend"
         ports:
             - "8440:80"
         container_name: "page-view"
+volumes:
+    authstorage:
+        name: "fitlayout-authstorage"
