@@ -30,6 +30,7 @@ services:
             - "8400:8400"
         volumes:
             - "/opt/shared/fitlayout-auth-server/publicKey.pem:/opt/jwtauth/publicKey.pem"
+            - "flstorage:/opt/storage"
         container_name: "backend-server"
     auth-server:
         image: "fitlayout/fitlayout-auth-server"
@@ -51,5 +52,7 @@ services:
             - "8440:80"
         container_name: "page-view"
 volumes:
+    flstorage:
+        name: "fitlayout-storage"
     authstorage:
         name: "fitlayout-authstorage"
