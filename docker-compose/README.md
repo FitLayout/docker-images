@@ -35,8 +35,6 @@ cp ../jwt-auth-microservice/src/main/resources/META-INF/microprofile-config.prop
 3. Build images locally (Optional, if you skip this step, the images will be pulled from Docker Hub)
 
 ```bash
-# Maven (mvn) and JDK 11
-# are required to build fitlayout-core.
 ./build-all.sh --with-core
 ```
 

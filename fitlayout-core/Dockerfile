@@ -1,4 +1,22 @@
-FROM ubuntu
+FROM maven:3.8.2-jdk-11-slim AS build
+
+WORKDIR /FitLayout
+COPY files/FitLayout/ .
+RUN mvn install:install-file \
+   -Dfile=lib/eclipse-rdf4j-3.4.3-onejar.jar \
+   -DgroupId=org.eclipse.rdf4j \
+   -DartifactId=rdf4j-onejar \
+   -Dversion=3.4.3 \
+   -Dpackaging=jar \
+   -DgeneratePom=true
+RUN mvn clean install -DskipTests
+
+WORKDIR /FitLayoutWeb
+COPY files/FitLayoutWeb/ .
+WORKDIR FitLayoutWebService
+RUN mvn clean package && mvn payara-micro:bundle
+
+FROM ubuntu:20.04 AS production
 LABEL maintainer="Radek Burget, burgetr@fit.vutbr.cz" description="Base image with FitLayout packages, puppeteer-based rendering backend and the required Java and node.js runtimes"
 # Image setup: java, nodejs
 RUN apt-get update \
@@ -18,13 +36,13 @@ ENV DEPLOYMENT_DIR /opt/server
 # FitLayout CLI
 ENV CLI FitLayout.jar
 RUN mkdir -p ${CLI_DIR}
-COPY ./files/${CLI} ${CLI_DIR}
+COPY --from=build /FitLayout/fitlayout-tools/target/${CLI} ${CLI_DIR}
 COPY ./config.properties ${CLI_DIR}
 
 # FitLayout server
 ENV BUNDLE fitlayout-web-microbundle.jar
 RUN mkdir -p ${DEPLOYMENT_DIR}
-COPY ./files/${BUNDLE} ${DEPLOYMENT_DIR}
+COPY --from=build /FitLayoutWeb/FitLayoutWebService/target/${BUNDLE} ${DEPLOYMENT_DIR}
 COPY ./config.properties ${DEPLOYMENT_DIR}
 
 # Puppeteer backend
