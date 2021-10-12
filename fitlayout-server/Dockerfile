@@ -7,7 +7,8 @@ ENV PORT 8400
 COPY ./config.properties ${DEPLOYMENT_DIR}
 
 # Entry point
-ENTRYPOINT java -jar ${BUNDLE} --port ${PORT} --systemproperties ${DEPLOYMENT_DIR}/config.properties
+COPY ./entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
 WORKDIR ${DEPLOYMENT_DIR}
 EXPOSE ${PORT}
 HEALTHCHECK --interval=1m CMD curl --fail http://localhost:8400/api/repository/status || exit 1
