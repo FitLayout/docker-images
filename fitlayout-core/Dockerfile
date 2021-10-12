@@ -37,13 +37,11 @@ ENV DEPLOYMENT_DIR /opt/server
 ENV CLI FitLayout.jar
 RUN mkdir -p ${CLI_DIR}
 COPY --from=build /FitLayout/fitlayout-tools/target/${CLI} ${CLI_DIR}
-COPY ./config.properties ${CLI_DIR}
 
 # FitLayout server
 ENV BUNDLE fitlayout-web-microbundle.jar
 RUN mkdir -p ${DEPLOYMENT_DIR}
 COPY --from=build /FitLayoutWeb/FitLayoutWebService/target/${BUNDLE} ${DEPLOYMENT_DIR}
-COPY ./config.properties ${DEPLOYMENT_DIR}
 
 # Puppeteer backend
 ENV BACKEND_DIR /opt/fitlayout-puppeteer

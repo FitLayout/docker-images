@@ -3,6 +3,9 @@ LABEL maintainer="Radek Burget, burgetr@fit.vutbr.cz" description="FitLayout ser
 
 ENV PORT 8400
 
+# Server config
+COPY ./config.properties ${DEPLOYMENT_DIR}
+
 # Entry point
 ENTRYPOINT java -jar ${BUNDLE} --port ${PORT} --systemproperties ${DEPLOYMENT_DIR}/config.properties
 WORKDIR ${DEPLOYMENT_DIR}
