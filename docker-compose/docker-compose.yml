@@ -31,6 +31,7 @@ services:
         ports:
             - "8400:8400"
         volumes:
+            - "/opt/config/fitlayout-server:/opt/config"
             - "/opt/shared/fitlayout-auth-server/publicKey.pem:/opt/jwtauth/publicKey.pem"
             - "flstorage:/opt/storage"
         container_name: "backend-server"
