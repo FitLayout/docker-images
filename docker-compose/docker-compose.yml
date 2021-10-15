@@ -15,6 +15,7 @@ services:
             - "./FrontServer/certbot/www:/var/www/certbot"
         container_name: "front-server"
         command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+        restart: "unless-stopped"
     certbot:
         image: "certbot/certbot"
         volumes:
@@ -22,6 +23,7 @@ services:
             - "./FrontServer/certbot/www:/var/www/certbot"
         container_name: "front-server-certbot"
         entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+        restart: "unless-stopped"
     backend-server:
         image: "fitlayout/fitlayout-server"
         depends_on:
@@ -32,6 +34,7 @@ services:
             - "/opt/shared/fitlayout-auth-server/publicKey.pem:/opt/jwtauth/publicKey.pem"
             - "flstorage:/opt/storage"
         container_name: "backend-server"
+        restart: "unless-stopped"
     auth-server:
         image: "fitlayout/fitlayout-auth-server"
         ports:
@@ -41,16 +44,19 @@ services:
             - "/opt/shared/fitlayout-auth-server:/opt/shared"
             - "authstorage:/opt/storage"
         container_name: "auth-server"
+        restart: "unless-stopped"
     auth-gui:
         image: "fitlayout/fitlayout-auth-gui"
         ports:
             - "8460:80"
         container_name: "auth-gui"
+        restart: "unless-stopped"
     page-view:
         image: "fitlayout/fitlayout-frontend"
         ports:
             - "8440:80"
         container_name: "page-view"
+        restart: "unless-stopped"
 volumes:
     flstorage:
         name: "fitlayout-storage"
