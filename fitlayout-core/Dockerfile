@@ -2,13 +2,6 @@ FROM maven:3.8.2-jdk-11-slim AS build
 
 WORKDIR /FitLayout
 COPY files/FitLayout/ .
-RUN mvn install:install-file \
-   -Dfile=lib/eclipse-rdf4j-3.4.3-onejar.jar \
-   -DgroupId=org.eclipse.rdf4j \
-   -DartifactId=rdf4j-onejar \
-   -Dversion=3.4.3 \
-   -Dpackaging=jar \
-   -DgeneratePom=true
 RUN mvn clean install -DskipTests
 
 WORKDIR /FitLayoutWeb
