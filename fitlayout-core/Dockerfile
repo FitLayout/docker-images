@@ -2,7 +2,7 @@ FROM maven:3.8.2-jdk-11-slim AS build
 
 WORKDIR /FitLayout
 COPY files/FitLayout/ .
-RUN mvn clean install -P assembly -DskipTests
+RUN mvn clean install -P assembly -DskipTests -Dmaven.javadoc.skip=true
 
 WORKDIR /FitLayoutWeb
 COPY files/FitLayoutWeb/ .
