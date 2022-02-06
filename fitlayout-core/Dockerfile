@@ -39,6 +39,7 @@ COPY --from=build /FitLayoutWeb/FitLayoutWebService/target/${BUNDLE} ${DEPLOYMEN
 # Puppeteer backend
 ENV BACKEND_DIR /opt/fitlayout-puppeteer
 RUN mkdir ${BACKEND_DIR}
+RUN mkdir ${BACKEND_DIR}/extensions # an empty directory where browser extensions can be added
 COPY ./files/index.js ${BACKEND_DIR}
 COPY ./files/package*.json ${BACKEND_DIR}/
 RUN cd ${BACKEND_DIR} && npm install

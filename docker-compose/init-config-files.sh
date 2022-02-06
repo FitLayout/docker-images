@@ -10,6 +10,7 @@
 #   /config
 #     /fitlayout-server
 #       config.properties # server additional properties (optional)
+#       extensions/ # browser extensions to be installed
 #     /fitlayout-auth-server
 #       microprofile-config.properties # auth server properties
 #   /shared
@@ -30,6 +31,9 @@ mkdir /opt/config/fitlayout-server
 chmod a+rx /opt/config/fitlayout-server
 cp "$CONF/server-config.properties" /opt/config/fitlayout-server/config.properties
 chmod a+r /opt/config/fitlayout-server/config.properties
+
+mkdir /opt/config/fitlayout-server/browser-extensions
+chmod a+rx /opt/config/fitlayout-server/browser-extensions
 
 mkdir /opt/config/fitlayout-auth-server
 chmod a+rx /opt/config/fitlayout-server
