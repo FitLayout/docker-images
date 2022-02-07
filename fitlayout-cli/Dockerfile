@@ -6,7 +6,7 @@ ENV OUT /out
 RUN mkdir -p ${OUT}
 
 # FitLayout config used for CLI
-COPY ./config.properties ${CLI_DIR}
+COPY ./config_defaults.properties ${CLI_DIR}
 
 # Entry point
 COPY ./cli-entrypoint.sh /
