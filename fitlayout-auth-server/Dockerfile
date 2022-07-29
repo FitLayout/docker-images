@@ -3,7 +3,7 @@ WORKDIR /app
 COPY app/ .
 RUN mvn clean package -DskipTests
 
-FROM payara/micro:5.2021.6-jdk11 AS production-stage
+FROM payara/micro:5.2022.2-jdk11 AS production-stage
 COPY --from=build-stage /app/target/jwt-auth.war $DEPLOY_DIR
 CMD [ \
     "--deploymentDir", "/opt/payara/deployments", \
