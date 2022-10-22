@@ -22,9 +22,11 @@ if [ -d "$EXT_FOLDER" ]; then
 fi
 
 echo "Browsing artifact storage in $STORAGE_PATH";
+echo "Starting the local server. After the server is started please point your server to"
+echo "http://localhost:8099"
 
 # Run the image
 docker run --rm \
-  -p 80:80 \
+  -p 127.0.0.1:8099:80/tcp \
   --mount type=bind,source="$STORAGE_PATH",target=/opt/storage/storage-cli \
-  fitlayout/fitlayout-local
+  fitlayout/fitlayout-local 2>&1 | grep 'ready in' | sed 's/.*/Server started./g'
