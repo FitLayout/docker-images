@@ -28,5 +28,5 @@ echo "http://localhost:8099"
 # Run the image
 docker run --rm \
   -p 127.0.0.1:8099:80/tcp \
-  --mount type=bind,source="$STORAGE_PATH",target=/opt/storage/storage-cli \
-  fitlayout/fitlayout-local 2>&1 | grep 'ready in' | sed 's/.*/Server started./g'
+  --mount type=bind,source="$STORAGE_PATH",target=/opt/storage \
+  fitlayout/fitlayout-local 2>&1 | grep 'ready in'
