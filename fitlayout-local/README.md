@@ -11,7 +11,7 @@ Docker must be installed on your system to use the docker images.
 
 ## Configuration
 
-Download the [fitlayout.sh](https://github.com/FitLayout/docker-images/blob/main/fitlayout-local/flbrowser.sh) script from GitHub:
+Download the [flbrowser.sh](https://github.com/FitLayout/docker-images/blob/main/fitlayout-local/flbrowser.sh) script from GitHub:
 
 ```bash
 wget https://raw.githubusercontent.com/FitLayout/docker-images/main/fitlayout-local/flbrowser.sh
