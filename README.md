@@ -9,6 +9,7 @@ This repository contains docker files for the individual FitLayout components. T
 - [fitlayout-cli](https://github.com/FitLayout/docker-images/tree/main/fitlayout-cli) the Command-line interface for invoking FitLayout.
 - [fitlayout-server](https://github.com/FitLayout/docker-images/tree/main/fitlayout-server) the FitLayout server application with a REST API.
 - [fitlayout-frontend](https://github.com/FitLayout/docker-images/tree/main/fitlayout-frontend) a JavaScript frontend providing a graphical user interface ([PageView](https://github.com/FitLayout/PageView)) to FitLayout in a web browser.
+- [fitlayout-local](https://github.com/FitLayout/docker-images/tree/main/fitlayout-local) the FitLayout Server backend together with the PageView frontend running in a signle container. It can be used for browsing local artifact repositories.
 
 The lastest versions of the docker images are also available on [docker hub](https://hub.docker.com/u/fitlayout).
 
