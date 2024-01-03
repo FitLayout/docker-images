@@ -1,7 +1,7 @@
 FitLayout/2 - Docker Images
 ===========================
 
-(c) 2015-2021 Radek Burget (burgetr@fit.vutbr.cz)
+(c) 2015-2024 Radek Burget (burgetr@fit.vutbr.cz)
 
 This repository contains docker files for the individual FitLayout components. The following docker images are provided:
 
