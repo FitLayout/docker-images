@@ -26,6 +26,8 @@ Run the local browser using
 ./flbrowser.sh [<repository path>]
 ```
 
-where the *repository path* is the path to the local RDF repository that will be used by the browser. When no path is provided, a default repository in `$HOME/.fitlayout/storage` will be used.
+where the *repository path* is the path to the local RDF repository that will be used by the browser. When no path is provided, the
+browser will try to use the path provided in the `FL_STORAGE` environment variable. If not set, the default repository in
+`$HOME/.fitlayout/storage` will be used.
 
 On first run, the related docker images will be pulled which may take some time.

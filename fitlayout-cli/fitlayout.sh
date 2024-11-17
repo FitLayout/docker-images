@@ -9,6 +9,11 @@ OUTPUT_FOLDER="$PWD"
 # EDIT: An optional folder with browser extensions to be used for rendering
 EXT_FOLDER="/opt/config/browser-extensions"
 
+# If the FL_STORAGE environment variable is set, use it as the storage path
+if [ -n "$FL_STORAGE" ]; then
+    STORAGE_PATH="$FL_STORAGE"
+fi
+
 # Check the folders
 if [ ! -d "$STORAGE_PATH" ]; then
         mkdir -p "$STORAGE_PATH"

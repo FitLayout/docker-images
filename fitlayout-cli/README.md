@@ -18,9 +18,11 @@ wget https://raw.githubusercontent.com/FitLayout/docker-images/main/fitlayout-cl
 chmod 755 fitlayout.sh
 ```
 
-Optionally, you may want to edit the `fitlayout.sh` file for changing the location of the following folders:
+The RDF storage path to be used may be provided in the `FL_STORAGE` environment variable.
 
-- `STORAGE_PATH` - the folder where the local RDF repository lives. If an empty folder is provided, a new repository will be initialized. It is set to `/opt/fitlayout/storage` by default.
+Optionally, you may want to edit the `fitlayout.sh` file for changing the default locations of the following folders:
+
+- `STORAGE_PATH` - the folder where the local RDF repository lives when `FL_STORAGE` is not set. If an empty folder is provided, a new repository will be initialized. It is set to `/opt/fitlayout/storage` by default.
 - `OUTPUT_FOLDER` - the folder used for storing the output produced by the `EXPORT` command. Within the container, this folder is referenced as `/out` (i.e. use for example `EXPORT -f xml -o /out/file.xml` for exporting a XML file (see a complete example below).
 
 ## Usage
