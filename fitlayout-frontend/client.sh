@@ -4,7 +4,9 @@
 # EDIT Change the port if necessary
 PORT="8440"
 
-API_TARGET="http://localhost:8400/api/"
+# The target should be specified without any path to make nginx proxy_pass
+# work transparently (and not decode the artifact uris in urls)
+API_TARGET="http://localhost:8400"
 
 if [ ! $# -eq 0 ]; then 
     API_TARGET="$1"
