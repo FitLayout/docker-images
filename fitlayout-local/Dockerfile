@@ -8,7 +8,7 @@ RUN npm run build
 FROM fitlayout/fitlayout-core
 LABEL maintainer="Radek Burget, burgetr@fit.vutbr.cz" description="FitLayout local server image."
 
-ENV PORT 8401
+ENV PORT=8401
 
 # Install nginx
 RUN apt-get update \

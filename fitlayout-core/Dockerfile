@@ -23,24 +23,24 @@ RUN apt-get update \
 && rm -rf /var/lib/apt/lists/* \
 && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-ENV LANG en_US.utf8
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
+ENV LANG=en_US.utf8
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
-ENV CLI_DIR /opt/cli
-ENV DEPLOYMENT_DIR /opt/server
+ENV CLI_DIR=/opt/cli
+ENV DEPLOYMENT_DIR=/opt/server
 
 # FitLayout CLI
-ENV CLI FitLayout.jar
+ENV CLI=FitLayout.jar
 RUN mkdir -p ${CLI_DIR}
 COPY --from=build /FitLayout/fitlayout-tools/target/${CLI} ${CLI_DIR}
 
 # FitLayout server
-ENV BUNDLE fitlayout-web-microbundle.jar
+ENV BUNDLE=fitlayout-web-microbundle.jar
 RUN mkdir -p ${DEPLOYMENT_DIR}
 COPY --from=build /FitLayoutWeb/FitLayoutWebService/target/${BUNDLE} ${DEPLOYMENT_DIR}
 
 # Puppeteer backend
-ENV BACKEND_DIR /opt/fitlayout-puppeteer
+ENV BACKEND_DIR=/opt/fitlayout-puppeteer
 RUN mkdir ${BACKEND_DIR}
 RUN mkdir ${BACKEND_DIR}/extensions # an empty directory where browser extensions can be added
 COPY ./files/index.js ${BACKEND_DIR}
